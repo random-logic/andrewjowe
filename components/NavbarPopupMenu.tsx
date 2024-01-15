@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react';
 
-export default function NavbarPopupMenu() {
+export default function NavbarPopupMenu(params: {options : string[]}) {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -30,15 +30,11 @@ export default function NavbarPopupMenu() {
             </button>
 
             <ul className="pl-4 space-y-2">
-              <li>
-                <a href="#" className="text-black-500 hover:underline">Home</a>
-              </li>
-              <li>
-                <a href="#" className="text-black-500 hover:underline">About</a>
-              </li>
-              <li>
-                <a href="#" className="text-black-500 hover:underline">Services</a>
-              </li>
+              {params.options.map((e, i) =>
+                <li key={i}>
+                  <a href="#" className="text-black-500 hover:underline">{e}</a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
